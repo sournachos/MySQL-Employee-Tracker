@@ -15,12 +15,101 @@ const connection = mysql.createConnection({
     database: 'employeeDB',
 });
 
+const query1 = 'SELECT * FROM employee'; //Selects all employees
+
+const start = () => {
+    inquirer
+        .prompt([
+            {
+                name: 'main',
+                type: 'list',
+                message: 'Welcome to Employee Tracker. Choose From Below:',
+                choices: ['Exit App', 'View All Employees', 'View All Employees by Department', 'View All Employees by Manager', 'Add Employee', 'Remove Employee', 'Update Employee Title', 'Update Employee Manager', 'View All Titles']
+            }
+        ]).then((res) => {
+            switch (res.main) {
+                case 'Exit App':
+                    console.log(`Thank you for using Employee Finder. Peace out! ⁣⁣
+                    ☁️ ☁️ ☁️ ☁️ ☁️ ☁️ ☁️ ☁️ ☁️
+                    ☁️ ☁️ ❤️ ❤️ ☁️ ❤️ ❤️ ☁️ ☁️
+                    ☁️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ☁️
+                    ☁️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ☁️
+                    ☁️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ❤️ ☁️
+                    ☁️ ☁️ ❤️ ❤️ ❤️ ❤️ ❤️ ☁️ ☁️
+                    ☁️ ☁️ ☁️ ❤️ ❤️ ❤️ ☁️ ☁️ ☁️
+                    ☁️ ☁️ ☁️ ☁️ ❤️ ☁️ ☁️ ☁️ ☁️
+                    ☁️ ☁️ ☁️ ☁️ ☁️ ☁️ ☁️ ☁️ ☁️`)
+                    connection.end();
+                    break;
+                            case 'View All Employees':
+                                viewAll();
+                                break;
+                                        case 'View All Employees by Department':
+                                            day = "Tuesday";
+                                            break;
+                                                    case 'View All Employees by Manager':
+                                                        day = "Wednesday";
+                                                        break;
+                                                                case 'Add Employee':
+                                                                    day = "Thursday";
+                                                                    break;
+                case 'Remove Employee':
+                    day = "Friday";
+                    break;
+                case 'Update Employee Title':
+                    day = "Saturday";
+                    break;
+                case 'Update Employee Manager':
+                    day = "Saturday";
+                    break;
+                case 'View All Titles':
+                    day = "Saturday";
+            }
+        })
+
+}
+
+//The function below is to exit back to the main menu if the user wishes to
+const exitSelection = () => {inquirer.prompt([{name: 'exit',type: 'confirm',message: 'For Main Menu Press Enter'}]).then((res) => { (res.exit) ? start() : start() })}
+
+function viewAll() {
+    connection.query(query1, (err, res) => { if (err) throw err; console.table(res); exitSelection() })
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 connection.connect((err) => {
     if (err) throw err;
-    start();
-});
-
-function start() {
     console.log(`     _____  _____  _____  _____  _____  _____  _____  _____  _____  _____  _____  _____ 
     (_____)(_____)(_____)(_____)(_____)(_____)(_____)(_____)(_____)(_____)(_____)(_____)
      _    _______  _______  _______  _        _______  _       _  _______ _______     _ 
@@ -41,17 +130,6 @@ function start() {
     (_)            |/       |_______||_|   |_| |______/  (_______/|_| |___/          (_)
      _____  _____  _____  _____  _____  _____  _____  _____  _____  _____  _____  _____ 
     (_____)(_____)(_____)(_____)(_____)(_____)(_____)(_____)(_____)(_____)(_____)(_____)
-    `)
-    inquirer
-        .prompt(
-            {
-                name:'main',
-                type:'list',
-                message:'Welcome to Employee Tracker. Choose From Below:',
-                choices:['View All Employees','View All Employees by Department','View All Employees by Manager','Add Employee','Remove Employee','Update Employee Title','Update Employee Manager','View All Titles']
-            }
-        );
-
-}
-
-start();
+    `);
+    start();
+});
