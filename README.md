@@ -3,7 +3,7 @@
   ***To properly run this app you need to have a way to create a MySQL Database on your computer <br>
   [MySQL Workbench](https://www.mysql.com/products/workbench/) <-- Click to download a way to create a database on your computer***
   <br>
-## Sample Page<br>
+## DEMO GIF<br>
 ![Demo Video as GIF](./demo/demo.gif)
 
  ## Table of Contents:
