@@ -4,7 +4,7 @@
   [MySQL Workbench](https://www.mysql.com/products/workbench/) <-- Click to download a way to create a database on your computer***
   <br>
 ## Sample Page<br>
-![Demo Video as GIF]()
+![Demo Video as GIF](./demo/demo.gif)
 
  ## Table of Contents:
  * [Installation](#installation)
